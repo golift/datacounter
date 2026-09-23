@@ -7,9 +7,10 @@ import (
 
 // WriterCounter is counter for io.Writer.
 type WriterCounter struct {
+	io.Writer
+
 	count  uint64
 	writes uint64
-	io.Writer
 }
 
 // NewWriterCounter function creates a new WriterCounter.

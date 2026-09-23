@@ -12,6 +12,7 @@ import (
 // ResponseWriterCounter is counter for http.ResponseWriter.
 type ResponseWriterCounter struct {
 	http.ResponseWriter
+
 	count      uint64
 	writes     uint64
 	started    time.Time
@@ -80,7 +81,7 @@ func (counter *ResponseWriterCounter) StatusCode() int {
 	return counter.statusCode
 }
 
-// Unwrap returns the underlying ResponseWriter
+// Unwrap returns the underlying ResponseWriter.
 func (counter *ResponseWriterCounter) Unwrap() http.ResponseWriter {
 	return counter.ResponseWriter
 }
