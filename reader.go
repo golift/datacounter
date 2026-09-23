@@ -1,3 +1,4 @@
+// Package datacounter counts bytes read from and written to an underlying stream.
 package datacounter
 
 import (
@@ -7,9 +8,10 @@ import (
 
 // ReaderCounter is counter for io.Reader.
 type ReaderCounter struct {
+	io.Reader
+
 	count uint64
 	reads uint64
-	io.Reader
 }
 
 // NewReaderCounter function for create new ReaderCounter.
@@ -21,7 +23,7 @@ func NewReaderCounter(r io.Reader) *ReaderCounter {
 	}
 }
 
-// Reads counts bytes read and increments read counter.
+// Read counts bytes read and increments the read counter.
 func (counter *ReaderCounter) Read(buf []byte) (int, error) {
 	atomic.AddUint64(&counter.reads, 1)
 
